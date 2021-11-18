@@ -25,12 +25,49 @@ namespace MorseCode
       return GetMorseCodeTranslation(input);
     }
 
-    public static Dictionary<string, string> GetMorseCodeTable()
+    public static Dictionary<string, string> MorseCodeToAlphabetTable()
     {
+      string dot = ".";
+      string dash = "-";
+      // International morse code
       return new Dictionary<string, string>() {
-        { ".-", "A" },
-        { "-...", "B" },
-        { "-.-.", "C" }
+        { string.Concat(dot, dash), "A" },
+        { string.Concat(dash, dot, dot, dot), "B" },
+        { string.Concat(dash, dot, dash, dot), "C" },
+
+        { string.Concat(dash, dot, dot), "D" },
+        { dot, "E" },
+        { string.Concat(dot, dot, dash, dot), "F" },
+        { string.Concat(dash, dash, dot), "G" },
+        { string.Concat(dot, dot, dot, dot), "H" },
+        { string.Concat(dot, dot), "I" },
+        { string.Concat(dot, dash, dash, dash), "J" },
+        { "-.-.", "K" },
+        { "-.-.", "L" },
+        { "-.-.", "M" },
+        { "-.-.", "N" },
+        { "-.-.", "O" },
+        { "-.-.", "P" },
+        { "-.-.", "Q" },
+        { "-.-.", "R" },
+        { "-.-.", "S" },
+        { "-.-.", "T" },
+        { "-.-.", "U" },
+        { "-.-.", "V" },
+        { "-.-.", "W" },
+        { "-.-.", "X" },
+        { "-.-.", "Y" },
+        { "-.-.", "Z" },
+        { "-.-.", "0" },
+        { "-.-.", "1" },
+        { "-.-.", "2" },
+        { "-.-.", "3" },
+        { "-.-.", "4" },
+        { "-.-.", "5" },
+        { "-.-.", "6" },
+        { "-.-.", "7" },
+        { "-.-.", "8" },
+        { "-.-.", "9" }
       };
     }
 
@@ -58,7 +95,7 @@ namespace MorseCode
 
     private static string GetSingleCharacter(string morseCharacter)
     {
-      var morseTable = GetMorseCodeTable();
+      var morseTable = MorseCodeToAlphabetTable();
 
       if (morseTable.ContainsKey(morseCharacter))
       {
