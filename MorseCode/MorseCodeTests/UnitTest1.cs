@@ -44,19 +44,23 @@ namespace MorseCodeTests
     }
 
     [Test]
-    public void Decoder_WhenContainsMorseA_ReturnStringA()
+    public void Decoder_WhenContainsSingleMorseLetter_ReturnsSingleAlphabetLetter(
+      [Values(".-", "-...", "-.-.")] string input)
     {
-      var input = ".-";
-      var output = MorseCodeDecoder.Decode(input);
-      Assert.AreEqual(output, "A");
+      // Is this proper test?
+      // Since I dont want to duplicate code for morse code table. If anyone can comment; please do
+      var tableMorseValue = "";
+      var morseTable = MorseCodeDecoder.GetMorseCodeTable();
+      if (morseTable.ContainsKey(input))
+      {
+        tableMorseValue = morseTable[input];
+      }
+
+      var outputValue = MorseCodeDecoder.Decode(input);
+      Assert.AreEqual(outputValue, tableMorseValue);
     }
 
-    [Test]
-    public void Decoder_WhenContainsMorseB_ReturnStringB()
-    {
-      var input = "-...";
-      var output = MorseCodeDecoder.Decode(input);
-      Assert.AreEqual(output, "B");
-    }
+    // testing single dot?
+    // testing single dash?
   }
 }

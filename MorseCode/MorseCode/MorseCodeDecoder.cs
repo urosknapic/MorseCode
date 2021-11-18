@@ -24,12 +24,18 @@ namespace MorseCode
       return GetMorseCode(input);
     }
 
+    public static Dictionary<string, string> GetMorseCodeTable()
+    {
+      return new Dictionary<string, string>() {
+        { ".-", "A" },
+        { "-...", "B" },
+        { "-.-.", "C" }
+      };
+    }
+
     private static string GetMorseCode(string character)
     {
-      var morseTable = new Dictionary<string, string>() {
-        { ".-", "A" },
-        { "-...", "B" }
-      };
+      var morseTable = GetMorseCodeTable();
 
       if (morseTable.ContainsKey(character))
       {
