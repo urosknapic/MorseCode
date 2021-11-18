@@ -1253,6 +1253,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
+      },
+      "MorseCode/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/MorseCode.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MorseCode.dll": {}
+        }
       }
     }
   },
@@ -4942,11 +4952,17 @@
         "system.xml.xpath.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xmldocument.nuspec"
       ]
+    },
+    "MorseCode/1.0.0": {
+      "type": "project",
+      "path": "../MorseCode/MorseCode.csproj",
+      "msbuildProject": "../MorseCode/MorseCode.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Microsoft.NET.Test.Sdk >= 16.9.4",
+      "MorseCode >= 1.0.0",
       "NUnit >= 3.13.1",
       "NUnit3TestAdapter >= 3.17.0",
       "coverlet.collector >= 3.0.2"
@@ -4978,7 +4994,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\uros\\morseCode\\MorseCode\\MorseCode\\MorseCode.csproj": {
+              "projectPath": "C:\\uros\\morseCode\\MorseCode\\MorseCode\\MorseCode.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

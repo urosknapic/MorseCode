@@ -97,3 +97,10 @@ C:\uros\morseCode\MorseCode\MorseCodeTests\obj\Debug\netcoreapp3.1\MorseCodeTest
 C:\uros\morseCode\MorseCode\MorseCodeTests\obj\Debug\netcoreapp3.1\MorseCodeTests.dll
 C:\uros\morseCode\MorseCode\MorseCodeTests\obj\Debug\netcoreapp3.1\MorseCodeTests.pdb
 C:\uros\morseCode\MorseCode\MorseCodeTests\obj\Debug\netcoreapp3.1\MorseCodeTests.genruntimeconfig.cache
+C:\uros\morseCode\MorseCode\MorseCodeTests\bin\Debug\netcoreapp3.1\CoverletSourceRootsMapping
+C:\uros\morseCode\MorseCode\MorseCodeTests\bin\Debug\netcoreapp3.1\MorseCode.deps.json
+C:\uros\morseCode\MorseCode\MorseCodeTests\bin\Debug\netcoreapp3.1\MorseCode.runtimeconfig.json
+C:\uros\morseCode\MorseCode\MorseCodeTests\bin\Debug\netcoreapp3.1\MorseCode.runtimeconfig.dev.json
+C:\uros\morseCode\MorseCode\MorseCodeTests\bin\Debug\netcoreapp3.1\MorseCode.exe
+C:\uros\morseCode\MorseCode\MorseCodeTests\bin\Debug\netcoreapp3.1\MorseCode.dll
+C:\uros\morseCode\MorseCode\MorseCodeTests\bin\Debug\netcoreapp3.1\MorseCode.pdb
