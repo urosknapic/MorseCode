@@ -43,12 +43,20 @@ namespace MorseCodeTests
       Assert.Throws(typeof(ArgumentException), () => MorseCodeDecoder.Decode(input));
     }
 
-    //[Test]
-    //public void Decoder_WhenStringContainsMorseCode_()
-    //{
-    //  var input = "asdsad -.-. asdas";
+    [Test]
+    public void Decoder_WhenContainsMorseA_ReturnStringA()
+    {
+      var input = ".-";
+      var output = MorseCodeDecoder.Decode(input);
+      Assert.AreEqual(output, "A");
+    }
 
-    //  Assert.Throws<Exception>(() => MorseCodeDecoder.Decode(input));
-    //}
+    [Test]
+    public void Decoder_WhenContainsMorseB_ReturnStringB()
+    {
+      var input = "-...";
+      var output = MorseCodeDecoder.Decode(input);
+      Assert.AreEqual(output, "B");
+    }
   }
 }

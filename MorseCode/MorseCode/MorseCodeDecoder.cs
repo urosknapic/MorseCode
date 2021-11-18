@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace MorseCode
@@ -9,7 +10,7 @@ namespace MorseCode
     {
       if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(input.Trim()))
       {
-        return "";
+        return string.Empty;
       }
 
       Regex r = new Regex("^[-. ]+$");
@@ -20,7 +21,22 @@ namespace MorseCode
         throw new ArgumentException("Input is not a morse code!");
       }
 
-      return "";
+      return GetMorseCode(input);
+    }
+
+    private static string GetMorseCode(string character)
+    {
+      var morseTable = new Dictionary<string, string>() {
+        { ".-", "A" },
+        { "-...", "B" }
+      };
+
+      if (morseTable.ContainsKey(character))
+      {
+        return morseTable[character];
+      }
+
+      return string.Empty;
     }
   }
 }
