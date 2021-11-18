@@ -101,6 +101,26 @@ namespace MorseCodeTests
       Assert.AreEqual(outputValue, "AC");
     }
 
+    [Test]
+    public void Decoder_WhenTwoMorseLettersAAWithSpce_ReturnStringAAWithSpace()
+    {
+      var input = ".-    .-";
+
+      var outputValue = MorseCodeDecoder.Decode(input);
+
+      Assert.AreEqual(outputValue, "A A");
+    }
+
+    [Test]
+    public void Decoder_WhenTwoMorseLettersACWithSpce_ReturnStringACWithSpace()
+    {
+      var input = ".-    -.-.";
+
+      var outputValue = MorseCodeDecoder.Decode(input);
+
+      Assert.AreEqual(outputValue, "A C");
+    }
+
     // testing single dot?
     // testing single dash?
   }
