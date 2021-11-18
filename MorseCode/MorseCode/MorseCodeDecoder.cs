@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace MorseCode
@@ -33,13 +34,26 @@ namespace MorseCode
       };
     }
 
-    private static string GetMorseCode(string character)
+    private static string GetMorseCode(string morseStringCode)
+    {
+      StringBuilder stringBuilder = new StringBuilder();
+      var splitedByMorseLetters = morseStringCode.Split(" ");
+
+      foreach(var morseCharacter in splitedByMorseLetters)
+      {
+        stringBuilder.Append(GetSingleCharacter(morseCharacter));
+      }
+
+      return stringBuilder.ToString();
+    }
+
+    private static string GetSingleCharacter(string morseCharacter)
     {
       var morseTable = GetMorseCodeTable();
 
-      if (morseTable.ContainsKey(character))
+      if (morseTable.ContainsKey(morseCharacter))
       {
-        return morseTable[character];
+        return morseTable[morseCharacter];
       }
 
       return string.Empty;

@@ -57,7 +57,48 @@ namespace MorseCodeTests
       }
 
       var outputValue = MorseCodeDecoder.Decode(input);
+
       Assert.AreEqual(outputValue, tableMorseValue);
+    }
+
+    [Test]
+    public void Decoder_WhenTwoMorseLetterAA_ReturnStringAA()
+    {
+      var input = ".- .-";
+
+      var outputValue = MorseCodeDecoder.Decode(input);
+
+      Assert.AreEqual(outputValue, "AA");
+    }
+
+    [Test]
+    public void Decoder_WhenTwoMorseLetterBB_ReturnStringBB()
+    {
+      var input = "-... -...";
+
+      var outputValue = MorseCodeDecoder.Decode(input);
+
+      Assert.AreEqual(outputValue, "BB");
+    }
+
+    [Test]
+    public void Decoder_WhenTwoMorseLetterCC_ReturnStringCC()
+    {
+      var input = "-.-. -.-.";
+
+      var outputValue = MorseCodeDecoder.Decode(input);
+
+      Assert.AreEqual(outputValue, "CC");
+    }
+
+    [Test]
+    public void Decoder_WhenTwoMorseLetterAC_ReturnStringAC()
+    {
+      var input = ".- -.-.";
+
+      var outputValue = MorseCodeDecoder.Decode(input);
+
+      Assert.AreEqual(outputValue, "AC");
     }
 
     // testing single dot?
