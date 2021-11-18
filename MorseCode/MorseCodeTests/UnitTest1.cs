@@ -1,5 +1,6 @@
 using MorseCode;
 using NUnit.Framework;
+using System;
 
 namespace MorseCodeTests
 {
@@ -11,7 +12,7 @@ namespace MorseCodeTests
     }
 
     [Test]
-    public void WhenStringEmpty_ReturnEmptyString()
+    public void Decoder_WhenEmpty_ReturnEmpty()
     {
       // Red - Green - Refactor
       // just enough code to pass the test
@@ -21,19 +22,33 @@ namespace MorseCodeTests
 
       // Act
       var output = MorseCodeDecoder.Decode(input);
-      
+
       // Assert 
       Assert.AreEqual(output, "");
     }
 
     [Test]
-    public void WhenStringEmptyWithSpaces_ReturnEmptyString(
-      [Values(" ", "  ", "   ", "    ")] string input
-      )
+    public void Decoder_WhenEmptyWithSpaces_ReturnEmpty([Values(" ", "  ", "   ", "    ")] string input)
     {
       var output = MorseCodeDecoder.Decode(input);
 
       Assert.AreEqual(output, "");
     }
+
+    [Test]
+    public void Decoder_WhenContainsOtherCharacter_ThrowException()
+    {
+      var input = "asdsad -.-. asdas";
+
+      Assert.Throws(typeof(ArgumentException), () => MorseCodeDecoder.Decode(input));
+    }
+
+    //[Test]
+    //public void Decoder_WhenStringContainsMorseCode_()
+    //{
+    //  var input = "asdsad -.-. asdas";
+
+    //  Assert.Throws<Exception>(() => MorseCodeDecoder.Decode(input));
+    //}
   }
 }
