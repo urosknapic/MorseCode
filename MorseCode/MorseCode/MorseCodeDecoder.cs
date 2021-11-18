@@ -22,7 +22,7 @@ namespace MorseCode
         throw new ArgumentException("Input is not a morse code!");
       }
 
-      return GetMorseCode(input);
+      return GetMorseCodeTranslation(input);
     }
 
     public static Dictionary<string, string> GetMorseCodeTable()
@@ -34,20 +34,26 @@ namespace MorseCode
       };
     }
 
-    private static string GetMorseCode(string morseStringCode)
+    private static string GetMorseCodeTranslation(string morseStringCode)
     {
-      if (morseStringCode.Equals(".-    .-"))
-        return "A A";
-
+      string fourSpaces = "    ";
+      string singleSpace = " ";
       StringBuilder stringBuilder = new StringBuilder();
-      var splitedByMorseLetters = morseStringCode.Split(" ");
 
-      foreach(var morseCharacter in splitedByMorseLetters)
+      var splitbyWords = morseStringCode.Split(fourSpaces);
+      foreach(var word in splitbyWords)
       {
-        stringBuilder.Append(GetSingleCharacter(morseCharacter));
+        var splitedByMorseLetters = word.Split(singleSpace);
+
+        foreach (var morseCharacter in splitedByMorseLetters)
+        {
+          stringBuilder.Append(GetSingleCharacter(morseCharacter));
+        }
+
+        stringBuilder.Append(singleSpace);
       }
 
-      return stringBuilder.ToString();
+      return stringBuilder.ToString().Trim();
     }
 
     private static string GetSingleCharacter(string morseCharacter)
