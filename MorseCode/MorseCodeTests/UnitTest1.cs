@@ -27,9 +27,13 @@ namespace MorseCodeTests
     }
 
     [Test]
-    public void WhenStringEmptyWith1Space_ReturnEmptyString()
+    public void WhenStringEmptyWithSpaces_ReturnEmptyString(
+      [Values(" ", "  ", "   ", "    ")] string input
+      )
     {
+      var output = MorseCodeDecoder.Decode(input);
 
+      Assert.AreEqual(output, "");
     }
   }
 }

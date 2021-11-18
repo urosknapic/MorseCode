@@ -4,7 +4,7 @@
   {
     public static string Decode(string input)
     {
-      return "";
+      return input.Trim();
     }
   }
 }
