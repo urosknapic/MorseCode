@@ -22,33 +22,6 @@ namespace MorseCode
       return GetMorseCodeTranslation(input);
     }
 
-    private static bool IsValidMorseCode(string morseCode)
-    {
-      Regex r = new Regex("^[-. ]+$");
-      return r.IsMatch(morseCode);
-    }
-
-    private static string GetMorseCodeTranslation(string morseCode)
-    {
-      StringBuilder stringBuilder = new StringBuilder();
-      foreach (var word in GetSplitByWords(morseCode))
-      {
-        stringBuilder.Append(GetMorseWordTranslation(word));
-      }
-      return stringBuilder.ToString().Trim();
-    }
-
-    private static string GetMorseWordTranslation(string morseWordCode)
-    {
-      StringBuilder sb = new StringBuilder();
-      foreach (var morseCharacter in SplitByCharacters(morseWordCode))
-      {
-        sb.Append(GetSingleCharacter(morseCharacter));
-      }
-      sb.Append(" ");
-      return sb.ToString();
-    }
-    
     public static Dictionary<string, string> MorseCodeToAlphabetTable()
     {
       string dot = ".";
@@ -95,13 +68,40 @@ namespace MorseCode
       };
     }
 
-    private static string [] SplitByCharacters(string morseStringWord)
+    private static bool IsValidMorseCode(string morseCode)
+    {
+      Regex r = new Regex("^[-. ]+$");
+      return r.IsMatch(morseCode);
+    }
+
+    private static string GetMorseCodeTranslation(string morseCode)
+    {
+      StringBuilder stringBuilder = new StringBuilder();
+      foreach (var word in GetSplitByWords(morseCode))
+      {
+        stringBuilder.Append(GetMorseWordTranslation(word));
+      }
+      return stringBuilder.ToString().Trim();
+    }
+
+    private static string GetMorseWordTranslation(string morseWordCode)
+    {
+      StringBuilder sb = new StringBuilder();
+      foreach (var morseCharacter in SplitByCharacters(morseWordCode))
+      {
+        sb.Append(GetSingleCharacter(morseCharacter));
+      }
+      sb.Append(" ");
+      return sb.ToString();
+    }
+
+    private static string[] SplitByCharacters(string morseStringWord)
     {
       // 1 space in morse separate character
       return morseStringWord.Split(" ");
     }
 
-    private static string [] GetSplitByWords(string morseStringCode)
+    private static string[] GetSplitByWords(string morseStringCode)
     {
       // 3 spaces in morse separate words
       return morseStringCode.Split("   ");
