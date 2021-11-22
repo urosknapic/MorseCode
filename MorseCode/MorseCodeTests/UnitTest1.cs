@@ -120,6 +120,15 @@ namespace MorseCodeTests
 
       Assert.AreEqual(outputValue, "A C");
     }
+    [Test]
+    public void Decode_SosMorseCode_ReturnSos()
+    {
+      var input = "... --- ...";
+
+      var outputValue = MorseCodeDecoder.Decode(input);
+
+      Assert.AreEqual(outputValue, "SOS");
+    }
 
     // testing single dot?
     // testing single dash?
