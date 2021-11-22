@@ -130,7 +130,14 @@ namespace MorseCodeTests
       Assert.AreEqual(outputValue, "SOS");
     }
 
-    // testing single dot?
-    // testing single dash?
+    [Test]
+    public void Decode_WhenSentenceMorseCode_ReturnTranslation()
+    {
+      var input = ".... . -.--   .--- ..- -.. .";
+
+      var outputValue = MorseCodeDecoder.Decode(input);
+
+      Assert.AreEqual(outputValue, "HEY JUDE");
+    }
   }
 }

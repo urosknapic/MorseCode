@@ -9,15 +9,12 @@ namespace MorseCode
   {
     public static string Decode(string input)
     {
-      if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(input.Trim()))
+      if (string.IsNullOrEmpty(input.Trim()))
       {
         return string.Empty;
       }
 
-      Regex r = new Regex("^[-. ]+$");
-      var validMorseCode = r.IsMatch(input);
-
-      if (!validMorseCode)
+      if (!IsValidMorseCode(input))
       {
         throw new ArgumentException("Input is not a morse code!");
       }
@@ -25,28 +22,33 @@ namespace MorseCode
       return GetMorseCodeTranslation(input);
     }
 
-    private static string GetMorseCodeTranslation(string morseStringCode)
+    private static bool IsValidMorseCode(string morseCode)
     {
-      string fourSpaces = "    ";
-      string singleSpace = " ";
+      Regex r = new Regex("^[-. ]+$");
+      return r.IsMatch(morseCode);
+    }
+
+    private static string GetMorseCodeTranslation(string morseCode)
+    {
       StringBuilder stringBuilder = new StringBuilder();
-
-      var splitbyWords = morseStringCode.Split(fourSpaces);
-      foreach (var word in splitbyWords)
+      foreach (var word in GetSplitByWords(morseCode))
       {
-        var splitedByMorseLetters = word.Split(singleSpace);
-
-        foreach (var morseCharacter in splitedByMorseLetters)
-        {
-          stringBuilder.Append(GetSingleCharacter(morseCharacter));
-        }
-
-        stringBuilder.Append(singleSpace);
+        stringBuilder.Append(GetMorseWordTranslation(word));
       }
-
       return stringBuilder.ToString().Trim();
     }
 
+    private static string GetMorseWordTranslation(string morseWordCode)
+    {
+      StringBuilder sb = new StringBuilder();
+      foreach (var morseCharacter in SplitByCharacters(morseWordCode))
+      {
+        sb.Append(GetSingleCharacter(morseCharacter));
+      }
+      sb.Append(" ");
+      return sb.ToString();
+    }
+    
     public static Dictionary<string, string> MorseCodeToAlphabetTable()
     {
       string dot = ".";
@@ -91,6 +93,18 @@ namespace MorseCode
         { string.Concat(dash, dash, dash,dot,dot), "8" },
         { string.Concat(dash, dash, dash,dash,dot), "9" }
       };
+    }
+
+    private static string [] SplitByCharacters(string morseStringWord)
+    {
+      // 1 space in morse separate character
+      return morseStringWord.Split(" ");
+    }
+
+    private static string [] GetSplitByWords(string morseStringCode)
+    {
+      // 3 spaces in morse separate words
+      return morseStringCode.Split("   ");
     }
 
     private static string GetSingleCharacter(string morseCharacter)
