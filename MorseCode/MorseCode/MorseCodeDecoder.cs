@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -76,23 +77,12 @@ namespace MorseCode
 
     private static string GetMorseCodeTranslation(string morseCode)
     {
-      StringBuilder stringBuilder = new StringBuilder();
-      foreach (var word in GetSplitByWords(morseCode))
-      {
-        stringBuilder.Append(GetMorseWordTranslation(word));
-      }
-      return stringBuilder.ToString().Trim();
+      return string.Join(" ", GetSplitByWords(morseCode).Select(word => GetMorseWordTranslation(word))).ToString().Trim();
     }
 
     private static string GetMorseWordTranslation(string morseWordCode)
     {
-      StringBuilder sb = new StringBuilder();
-      foreach (var morseCharacter in SplitByCharacters(morseWordCode))
-      {
-        sb.Append(GetSingleCharacter(morseCharacter));
-      }
-      sb.Append(" ");
-      return sb.ToString();
+      return string.Join("", SplitByCharacters(morseWordCode).Select(w => GetSingleCharacter(w)));
     }
 
     private static string[] SplitByCharacters(string morseStringWord)
