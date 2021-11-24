@@ -23,6 +23,27 @@ namespace MorseCode
       return GetMorseCodeTranslation(input);
     }
 
+    public static string BitsDecoder(string bitsInput)
+    {
+      if (string.IsNullOrEmpty(bitsInput))
+      {
+        return string.Empty;
+      }
+      
+      if (!IsValidBitsString(bitsInput))
+      {
+        throw new ArgumentException("Invalid input! String input contains other values than just bit(s) values! Input should contain only 0s and 1s!", bitsInput);
+      }
+
+      return ".";
+    }
+
+    private static bool IsValidBitsString(string bitsInput)
+    {
+      Regex rx = new Regex("^[0,1]+$");
+      return rx.IsMatch(bitsInput);
+    }
+
     public static Dictionary<string, string> MorseCodeToAlphabetTable()
     {
       string dot = ".";
