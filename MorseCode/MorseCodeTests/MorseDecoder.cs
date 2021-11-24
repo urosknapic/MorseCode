@@ -4,13 +4,8 @@ using System;
 
 namespace MorseCodeTests
 {
-  public class Tests
+  public class MorseDecoder
   {
-    [SetUp]
-    public void Setup()
-    {
-    }
-
     [Test]
     public void Decoder_WhenEmpty_ReturnEmpty()
     {
