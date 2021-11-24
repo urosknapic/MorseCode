@@ -6,6 +6,7 @@ namespace MorseCodeTests
 {
   public class BitsDecoder
   {
+    
     [Test]
     public void WhenBitsInputIsEmpty_ReturnEmpty()
     {
@@ -32,6 +33,36 @@ namespace MorseCodeTests
       var output = MorseCodeDecoder.BitsDecoder(input);
 
       Assert.AreEqual(output, ".");
+    }
+
+    [Test]
+    public void WhenValidBitsInput_Six1BitsForDash_ReturnDashString()
+    {
+      string input = "111111";
+
+      var output = MorseCodeDecoder.BitsDecoder(input);
+
+      Assert.AreEqual(output, "-");
+    }
+
+    [Test]
+    public void When_Two0BitsForNoSpaceBetweenDotOrDash_ReturnEmptyString()
+    {
+      string input = "00";
+
+      var output = MorseCodeDecoder.BitsDecoder(input);
+
+      Assert.AreEqual(output, "");
+    }
+
+    [Test]
+    public void When_BitsFor4Dots_Return4Dots()
+    {
+      string input = "11001100110011";
+
+      var output = MorseCodeDecoder.BitsDecoder(input);
+
+      Assert.AreEqual(output, "....");
     }
   }
 }

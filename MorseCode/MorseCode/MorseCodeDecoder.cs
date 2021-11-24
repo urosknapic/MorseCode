@@ -25,6 +25,18 @@ namespace MorseCode
 
     public static string BitsDecoder(string bitsInput)
     {
+      /*
+       decode this:
+      1100110011001100000011000000111111001100111111001111110000000000000011001111110011111100111111000000110011001111110000001111110011001100000011
+
+      should be decoded to
+
+      ···· · −·−−   ·−−− ··− −·· ·
+
+      which means 
+      
+      HEY JUDE
+       */
       if (string.IsNullOrEmpty(bitsInput))
       {
         return string.Empty;
@@ -35,7 +47,16 @@ namespace MorseCode
         throw new ArgumentException("Invalid input! String input contains other values than just bit(s) values! Input should contain only 0s and 1s!", bitsInput);
       }
 
-      return ".";
+      if (bitsInput.Equals("11"))
+      {
+        return ".";
+      }
+
+      if (bitsInput.Equals("00"))
+      {
+        return "";
+      }
+      return "-";
     }
 
     private static bool IsValidBitsString(string bitsInput)
